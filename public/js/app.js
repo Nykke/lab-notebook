@@ -25,7 +25,7 @@ angular
     })
     .state("index", {
       url: "/notebooks",
-      templateUrl: "/assets/js/ng.views/index.html",
+      templateUrl: "/assets/js/ng-views/index.html",
       controller: "NoteBookIndexController",
       controllerAs: "vm"
     })
