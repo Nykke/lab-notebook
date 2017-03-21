@@ -1,4 +1,4 @@
-const NoteBook = require("./models/.js").NoteBook
+const NoteBook = require("./models.js").NoteBook
 const seedData = require("./seedData.json")
 
 NoteBook.remove({}, () => {
