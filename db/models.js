@@ -10,5 +10,5 @@ const NoteBookSchema = new mongoose.Schema({
 const NoteBook = mongoose.model('NoteBook', NoteBookSchema)
 
 module.exports = {
-    Notebook: Notebook
+    NoteBook: NoteBook
 }
