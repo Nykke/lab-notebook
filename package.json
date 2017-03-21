@@ -1,0 +1,22 @@
+{
+  "name": "lab-notebook",
+  "version": "1.0.0",
+  "description": "MEAN Notebook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laburr27/lab-notebook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laburr27/lab-notebook/issues"
+  },
+  "homepage": "https://github.com/laburr27/lab-notebook#readme",
+  "dependencies": {
+    "mongoose": "^4.9.1"
+  }
+}
