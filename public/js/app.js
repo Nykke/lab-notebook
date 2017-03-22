@@ -17,7 +17,7 @@ angular
   ])
   .controller("NoteBookNewController", [
     "$state",
-    "$NoteBookFactory",
+    "NoteBookFactory",
     NoteBookNewControllerFunction
 
   ])
@@ -66,14 +66,15 @@ angular
   }
 
   function NoteBookNewControllerFunction($state, NoteBookFactory){
-    this.notebook = new NoteBookFactory()
+    this.newNoteBookFactory = new NoteBookFactory()
     this.create = function(){
-      this.notebook.$save(function(notebook){
+      this.newNoteBookFactory.$save().then(function(notebook){
         $state.go("show", {title: notebook.title})
+        console.log(this.newNoteBookFactory)
       })
     }
   }
 
-  function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory ){
-    this.notebooks = NoteBookFactory.get({title: $stateParams.title})
+  function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory){
+    this.notebook = NoteBookFactory.get({title: $stateParams.title})
   }
