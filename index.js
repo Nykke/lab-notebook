@@ -21,9 +21,22 @@ app.get('/api/notebooks', function(req, res){
   });
 })
 
-app.post('api/notebooks', function(req, res){
-  Notebook.create(req.body.candidate).then(function(notebook){
+app.post('/api/notebooks', function(req, res){
+  Notebook.create(req.body.notebook).then(function(notebook){
     res.json(notebook)
+  })
+})
+
+app.put('/api/notebooks/:title', function(req, res){
+  Notebook.findOneandUpdate({title: req.params.title}, req.body,
+  {new: true}).then(function(notebook){
+    res.json(notebook)
+  })
+})
+
+app.delete('api/notebooks/:title', function(req, res){
+  Notebook.findOneandRemove({title: req.params.title}).then(function(){
+    res.json({success: true})
   })
 })
 
