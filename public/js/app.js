@@ -12,10 +12,10 @@ angular
     NoteBookFactoryFunction
   ])
   .controller("NoteBookIndexController", [
-    "$state",
     "NoteBookFactory",
     NoteBookIndexControllerFunction
   ])
+
 
   function Router ($stateProvider) {
     $stateProvider
