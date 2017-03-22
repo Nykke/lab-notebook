@@ -16,6 +16,7 @@ angular
     NoteBookIndexControllerFunction
   ])
   .controller("NoteBookShowController", [
+    "$state",
     "$stateParams",
     "NoteBookFactory",
     NoteBookShowControllerFunction
@@ -34,7 +35,7 @@ angular
       controllerAs: "vm"
     })
     .state("show", {
-      utl: "/notebooks/:title",
+      url: "/notebooks/:title",
       templateUrl: "/assets/js/ng-views/show.html",
       controller: "NoteBookShowController",
       controllerAs: "vm"
@@ -51,6 +52,6 @@ angular
     this.notebooks = NoteBookFactory.query();
   }
 
-  function NoteBookShowControllerFunction ($stateParams, NoteBookFactory ){
-    this.notebooks = NoteBookFactory.get({title: $stateParams.title})
+  function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory ){
+    this.notebook = NoteBookFactory.get({title: $stateParams.title})
   }
