@@ -21,8 +21,8 @@ app.get('/api/notebooks', function(req, res){
   });
 })
 
-app.post('api/notebooks', function(req, res){
-  Notebook.create(req.body.candidate).then(function(notebook){
+app.post('/api/notebooks', function(req, res){
+  Notebook.create(req.body.notebook).then(function(notebook){
     res.json(notebook)
   })
 })
