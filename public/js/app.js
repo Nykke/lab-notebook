@@ -15,12 +15,19 @@ angular
     "NoteBookFactory",
     NoteBookIndexControllerFunction
   ])
+  .controller("NoteBookNewController", [
+    "$state",
+    "$NoteBookFactory",
+    NoteBookNewControllerFunction
+
+  ])
   .controller("NoteBookShowController", [
     "$state",
     "$stateParams",
     "NoteBookFactory",
     NoteBookShowControllerFunction
   ])
+
 
   function Router ($stateProvider) {
     $stateProvider
@@ -32,6 +39,12 @@ angular
       url: "/notebooks",
       templateUrl: "/assets/js/ng-views/index.html",
       controller: "NoteBookIndexController",
+      controllerAs: "vm"
+    })
+    .state("new", {
+      url:"/notebooks/new",
+      templateUrl: "/assets/js/ng-views/new.html",
+      controller: "NoteBookNewController",
       controllerAs: "vm"
     })
     .state("show", {
@@ -52,6 +65,15 @@ angular
     this.notebooks = NoteBookFactory.query();
   }
 
+  function NoteBookNewControllerFunction($state, NoteBookFactory){
+    this.notebook = new NoteBookFactory()
+    this.create = function(){
+      this.notebook.$save(function(notebook){
+        $state.go("show", {title: notebook.title})
+      })
+    }
+  }
+
   function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory ){
-    this.notebook = NoteBookFactory.get({title: $stateParams.title})
+    this.notebooks = NoteBookFactory.get({title: $stateParams.title})
   }
