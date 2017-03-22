@@ -11,21 +11,22 @@ app.set('port', process.env.PORT || 3001)
 app.use('/assets', express.static('public'))
 app.use(parser.urlencoded({extend: true}))
 
-app.get('/', function(req, res) {
+app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html')
 })
 
 app.get('/api/notebooks', function(req, res){
-  Notebook.find({}).then(function(notebooks){
+  NoteBook.find({}).then(function(notebooks){
     res.json(notebooks);
   });
 })
 
 app.get('/api/notebooks/:title', function(req, res){
-  Notebook.findOne({title: req.params.title}).then(function(notebook){
+  NoteBook.findOne({title: req.params.title}).then(function(notebook){
     res.json(notebook)
   })
 })
+
 
 
 app.listen(3001, () => {
