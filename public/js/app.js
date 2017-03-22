@@ -65,10 +65,11 @@ angular
   }
 
   function NoteBookNewControllerFunction($state, NoteBookFactory){
-    this.notebook = new NoteBookFactory()
+    this.newNoteBookFactory = new NoteBookFactory()
     this.create = function(){
-      this.notebook.$save().then(function(notebook){
+      this.newNoteBookFactory.$save().then(function(notebook){
         $state.go("show", {title: notebook.title})
+        console.log(this.newNoteBookFactory)
       })
     }
   }
