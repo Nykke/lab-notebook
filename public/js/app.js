@@ -15,6 +15,11 @@ angular
     "NoteBookFactory",
     NoteBookIndexControllerFunction
   ])
+  .controller("NoteBookShowController", [
+    "$stateParams",
+    "NoteBookFactory",
+    NoteBookShowControllerFunction
+  ])
 
 
   function Router ($stateProvider) {
@@ -29,6 +34,12 @@ angular
       controller: "NoteBookIndexController",
       controllerAs: "vm"
     })
+    .state("show", {
+      utl: "/notebooks/:title",
+      templateUrl: "/assets/js/ng-views/show.html",
+      controller: "NoteBookShowController",
+      controllerAs: "vm"
+    })
   }
 
   function NoteBookFactoryFunction($resource){
@@ -39,4 +50,8 @@ angular
 
   function NoteBookIndexControllerFunction( NoteBookFactory ){
     this.notebooks = NoteBookFactory.query();
+  }
+
+  function NoteBookShowControllerFunction ($stateParams, NoteBookFactory ){
+    this.notebooks = NoteBookFactory.get({title: $stateParams.title})
   }
