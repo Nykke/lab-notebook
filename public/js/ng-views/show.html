@@ -1,2 +1,7 @@
 <h2>{{vm.notebook.title}}</h2>
 <p>{{vm.notebook.entry}}</p>
+
+<input type="text" ng-model="vm.notebook.title"  />
+<textarea type="text" ng-model="vm.notebook.entry"></textarea>
+<button data-ng-click="vm.update()">Update Entry</button>
+<button data-ng-click="vm.destroy()">Delete Thoughts</button>

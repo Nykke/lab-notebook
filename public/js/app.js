@@ -19,7 +19,6 @@ angular
     "$state",
     "NoteBookFactory",
     NoteBookNewControllerFunction
-
   ])
   .controller("NoteBookShowController", [
     "$state",
@@ -75,6 +74,14 @@ angular
     }
   }
 
-  function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory){
+  function NoteBookShowControllerFunction ($state, $stateParams, NoteBookFactory ){
     this.notebook = NoteBookFactory.get({title: $stateParams.title})
+    this.update = function () {
+      this.notebook.$update({title: $stateParams.title})
+    }
+    this.destroy = function (){
+      this.notebook.$delete({title: $stateParams.title}).then(function(){
+        $state.go("index")
+      })
+    }
   }

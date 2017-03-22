@@ -27,6 +27,19 @@ app.post('/api/notebooks', function(req, res){
   })
 })
 
+app.put('/api/notebooks/:title', function(req, res){
+  Notebook.findOneandUpdate({title: req.params.title}, req.body,
+  {new: true}).then(function(notebook){
+    res.json(notebook)
+  })
+})
+
+app.delete('api/notebooks/:title', function(req, res){
+  Notebook.findOneandRemove({title: req.params.title}).then(function(){
+    res.json({success: true})
+  })
+})
+
 app.get('/api/notebooks/:title', function(req, res){
   NoteBook.findOne({title: req.params.title}).then(function(notebook){
     res.json(notebook)
